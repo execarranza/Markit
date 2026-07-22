@@ -1,0 +1,20 @@
+# Build outputs
+**/bin/
+**/obj/
+dist/
+
+# User/local IDE files
+.vs/
+.vscode/
+*.user
+*.suo
+
+# Codex/local agent workspace files
+.codex/
+.agents/
+AGENTS.md
+tmp-*.txt
+
+# OS files
+Thumbs.db
+Desktop.ini
