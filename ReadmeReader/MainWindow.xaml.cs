@@ -502,9 +502,30 @@ public partial class MainWindow : Window
             return;
         }
 
-        var original = currentMarkdown.Substring(start, length);
-        currentMarkdown = currentMarkdown.Remove(start, length)
-            .Insert(start, $"""<mark style="background-color: {color};">{original}</mark>""");
+        var ranges = BuildHighlightRanges(start, length);
+        if (ranges.Count == 0)
+        {
+            MessageBox.Show(
+                "No encontre texto util para resaltar dentro de esa seleccion.",
+                "No se pudo resaltar",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information);
+            return;
+        }
+
+        if (ranges.Any(range => RangeIntersectsExistingMark(range.Start, range.Length)))
+        {
+            MessageBox.Show("Parte de esa seleccion ya parece estar dentro de un resaltado.", "Resaltado existente", MessageBoxButton.OK, MessageBoxImage.Information);
+            return;
+        }
+
+        foreach (var range in ranges.OrderByDescending(range => range.Start))
+        {
+            var original = currentMarkdown.Substring(range.Start, range.Length);
+            currentMarkdown = currentMarkdown.Remove(range.Start, range.Length)
+                .Insert(range.Start, $"""<mark style="background-color: {color};">{original}</mark>""");
+        }
+
         MarkDocumentChanged("Resaltado aplicado");
     }
 
@@ -804,6 +825,54 @@ public partial class MainWindow : Window
         return new VisibleMarkdownMap(visible.ToString(), sourceIndexes);
     }
 
+    private List<(int Start, int Length)> BuildHighlightRanges(int start, int length)
+    {
+        var ranges = new List<(int Start, int Length)>();
+        var selectedEnd = start + length;
+        var lineStart = FindLineStart(currentMarkdown, start);
+
+        while (lineStart < selectedEnd && lineStart < currentMarkdown.Length)
+        {
+            var newlineIndex = currentMarkdown.IndexOf('\n', lineStart);
+            var lineEnd = newlineIndex >= 0 ? newlineIndex : currentMarkdown.Length;
+            var overlapStart = Math.Max(start, lineStart);
+            var overlapEnd = Math.Min(selectedEnd, lineEnd);
+
+            if (overlapStart < overlapEnd)
+            {
+                var contentStart = FindMarkdownLineContentStart(currentMarkdown, lineStart, lineEnd);
+                var rangeStart = Math.Max(overlapStart, contentStart);
+                var rangeEnd = overlapEnd;
+
+                while (rangeStart < rangeEnd && char.IsWhiteSpace(currentMarkdown[rangeStart]))
+                {
+                    rangeStart++;
+                }
+
+                while (rangeEnd > rangeStart && char.IsWhiteSpace(currentMarkdown[rangeEnd - 1]))
+                {
+                    rangeEnd--;
+                }
+
+                if (rangeStart < rangeEnd)
+                {
+                    var rangeLength = rangeEnd - rangeStart;
+                    ExpandRangeToMarkdownConstruct(ref rangeStart, ref rangeLength);
+                    ranges.Add((rangeStart, rangeLength));
+                }
+            }
+
+            if (newlineIndex < 0)
+            {
+                break;
+            }
+
+            lineStart = newlineIndex + 1;
+        }
+
+        return ranges;
+    }
+
     private void ExpandRangeToMarkdownConstruct(ref int start, ref int length)
     {
         var end = start + length;
@@ -871,7 +940,7 @@ public partial class MainWindow : Window
 
     private static string NormalizeForVisibleSearch(string text)
     {
-        return text.Replace("\r\n", "\n").Replace('\r', '\n').Trim();
+        return StripRenderedListMarkers(text.Replace("\r\n", "\n").Replace('\r', '\n')).Trim();
     }
 
     private static string NormalizeLineEndings(string text)
@@ -890,6 +959,53 @@ public partial class MainWindow : Window
         var lastOpen = before.LastIndexOf("<mark", StringComparison.OrdinalIgnoreCase);
         var lastClose = before.LastIndexOf("</mark>", StringComparison.OrdinalIgnoreCase);
         return lastOpen > lastClose;
+    }
+
+    private bool RangeIntersectsExistingMark(int start, int length)
+    {
+        var end = start + length;
+        var matches = Regex.Matches(currentMarkdown, @"<mark\b[^>]*>(?<inner>.*?)</mark>", RegexOptions.IgnoreCase | RegexOptions.Singleline);
+        foreach (Match match in matches)
+        {
+            var innerStart = match.Groups["inner"].Index;
+            var innerEnd = innerStart + match.Groups["inner"].Length;
+            if (start < innerEnd && end > innerStart)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private static int FindLineStart(string text, int index)
+    {
+        var previousNewline = text.LastIndexOf('\n', Math.Max(0, index));
+        return previousNewline >= 0 ? previousNewline + 1 : 0;
+    }
+
+    private static int FindMarkdownLineContentStart(string text, int lineStart, int lineEnd)
+    {
+        var index = lineStart;
+        while (index < lineEnd && text[index] is ' ' or '\t')
+        {
+            index++;
+        }
+
+        var markerMatch = Regex.Match(text[index..lineEnd], @"^(#{1,6}\s+|>\s?|[-*+]\s+|\d+[.)]\s+)");
+        return markerMatch.Success ? index + markerMatch.Length : index;
+    }
+
+    private static string StripRenderedListMarkers(string text)
+    {
+        var lines = text.Split('\n');
+        for (var i = 0; i < lines.Length; i++)
+        {
+            lines[i] = Regex.Replace(lines[i], @"^\s*[•·◦▪▫‣⁃]\s+", "");
+            lines[i] = Regex.Replace(lines[i], @"^\s*\d+[.)]\s+", "");
+        }
+
+        return string.Join('\n', lines);
     }
 
     private void MarkDocumentChanged(string message)
