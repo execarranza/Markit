@@ -6,6 +6,99 @@
 
 La idea es simple: leer Markdown con una experiencia comoda, parecida a un lector PDF liviano o a un apunte digital, pero conservando la ventaja de que el archivo sigue siendo texto plano.
 
+## Instalacion y uso
+
+### Compatibilidad actual
+
+| Sistema | Estado | Nota |
+|---|---|---|
+| Windows x64 | Soportado en `v0.1.0` | Version actual basada en WPF y .NET 8 |
+| Linux | Roadmap | No hay instalador Linux todavia |
+| macOS | No planificado | Podria evaluarse luego de resolver multiplataforma |
+
+La primera linea base de Markit esta enfocada en Windows porque WPF es una tecnologia especifica de Windows. La instalacion en Linux queda marcada como evolucion futura y requiere evaluar una base multiplataforma o una variante de interfaz compatible.
+
+### Instalar en Windows
+
+El instalador se genera como ejecutable single-file para Windows x64.
+
+Flujo esperado:
+
+1. Compilar y publicar la app.
+2. Copiar el ejecutable publicado como `MarkitInstaller.exe`.
+3. Ejecutar el instalador.
+4. Elegir la carpeta de instalacion o aceptar la ubicacion por defecto.
+5. Asociar archivos Markdown con Markit para el usuario actual.
+
+Ubicacion por defecto:
+
+```text
+%LocalAppData%/Markit/Markit.exe
+```
+
+Comandos soportados:
+
+```powershell
+.\Markit.exe --install
+.\Markit.exe --uninstall
+```
+
+### Uso basico
+
+1. Abrir Markit.
+2. Seleccionar un archivo `.md`, `.markdown`, `.mdown` o `.txt`.
+3. Leer el documento con formato visual.
+4. Ajustar el zoom segun la pantalla.
+5. Usar busqueda para encontrar contenido.
+6. Resaltar fragmentos importantes como si fuera un apunte.
+7. Guardar el Markdown si se quieren conservar los resaltados.
+
+Markit esta pensado principalmente para visualizar y estudiar documentos Markdown. La edicion existe como apoyo para guardar resaltados o cambios puntuales, pero el foco del proyecto no es reemplazar un editor de texto ni un IDE.
+
+### Instalacion en Linux
+
+Linux esta definido como proxima evolucion del proyecto, no como funcionalidad disponible en `v0.1.0`.
+
+Para soportar Linux se evaluaran alternativas que permitan conservar el proposito de Markit:
+
+- lector simple de Markdown;
+- instalacion local;
+- experiencia comoda de lectura;
+- resaltadores para estudio;
+- soporte claro/oscuro;
+- base tecnica mantenible.
+
+Posibles caminos tecnicos:
+
+- separar el motor de lectura/renderizado Markdown de la interfaz WPF;
+- evaluar una UI multiplataforma de escritorio;
+- generar paquetes instalables para distribuciones Linux cuando exista una base compatible.
+
+### Compilar desde codigo
+
+Requisitos:
+
+- Windows
+- .NET 8 SDK
+
+Build de validacion:
+
+```powershell
+dotnet build .\ReadmeReader\ReadmeReader.csproj -c Release --no-restore
+```
+
+Publicacion single-file:
+
+```powershell
+dotnet publish .\ReadmeReader\ReadmeReader.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true
+```
+
+Salida publicada:
+
+```text
+ReadmeReader/bin/Release/net8.0-windows/win-x64/publish/ReadmeReader.exe
+```
+
 ## Por que nace
 
 Markit nace de una necesidad cotidiana: abrir un README, una nota tecnica, una guia de estudio o documentacion de proyecto sin tener que cargar un editor completo.
@@ -122,8 +215,6 @@ El objetivo de esta etapa no es cubrir todos los escenarios posibles, sino dejar
 - **Privacidad:** sin telemetria
 - **Dependencias externas:** sin paquetes NuGet adicionales
 
-> Nota: la version actual esta enfocada en Windows porque WPF es una tecnologia especifica de Windows. La compatibilidad con Linux queda planteada como evolucion futura y requerira evaluar una base multiplataforma o una variante de interfaz compatible.
-
 ## Arquitectura
 
 Markit mantiene una arquitectura deliberadamente simple para una aplicacion de escritorio chica.
@@ -183,56 +274,6 @@ Los resaltados se guardan directamente en el Markdown como HTML compatible:
 ```
 
 Esto permite conservar el resaltado sin crear una base de datos adicional ni archivos paralelos.
-
-## Instalacion en Windows
-
-El instalador se genera como ejecutable single-file para Windows x64.
-
-Flujo esperado:
-
-1. Compilar y publicar la app.
-2. Copiar el ejecutable publicado como `MarkitInstaller.exe`.
-3. Ejecutar el instalador.
-4. Elegir la carpeta de instalacion o aceptar la ubicacion por defecto.
-5. Asociar archivos Markdown con Markit para el usuario actual.
-
-Ubicacion por defecto:
-
-```text
-%LocalAppData%/Markit/Markit.exe
-```
-
-Comandos soportados:
-
-```powershell
-.\Markit.exe --install
-.\Markit.exe --uninstall
-```
-
-## Compilar
-
-Requisitos:
-
-- Windows
-- .NET 8 SDK
-
-Build de validacion:
-
-```powershell
-dotnet build .\ReadmeReader\ReadmeReader.csproj -c Release --no-restore
-```
-
-Publicacion single-file:
-
-```powershell
-dotnet publish .\ReadmeReader\ReadmeReader.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:EnableCompressionInSingleFile=true
-```
-
-Salida publicada:
-
-```text
-ReadmeReader/bin/Release/net8.0-windows/win-x64/publish/ReadmeReader.exe
-```
 
 ## Assets
 
