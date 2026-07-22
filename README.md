@@ -2,15 +2,17 @@
 
 ![markit logo](ReadmeReader/Assets/markit-logo-horizontal-light.png)
 
-**markit** es un lector open source de archivos Markdown para Windows. Esta pensado para abrir documentos `.md` con formato, zoom, busqueda, resaltado, modo claro/oscuro y pantalla completa, sin depender de Visual Studio Code, extensiones ni herramientas pesadas.
+**markit** es un lector open source de archivos Markdown para Windows. Esta pensado para abrir documentos `.md` con formato, zoom, busqueda, resaltado, modo claro/oscuro y pantalla completa, sin depender de Visual Studio Code, extensiones, navegadores ni herramientas pesadas.
 
-La idea es simple: leer Markdown con una experiencia comoda, parecida a un lector PDF liviano, pero conservando la naturaleza editable del archivo.
+La idea es simple: leer Markdown con una experiencia comoda, parecida a un lector PDF liviano o a un apunte digital, pero conservando la ventaja de que el archivo sigue siendo texto plano.
 
 ## Por que nace
 
 Markit nace de una necesidad cotidiana: abrir un README, una nota tecnica, una guia de estudio o documentacion de proyecto sin tener que cargar un editor completo.
 
-Markdown es excelente para escribir y versionar informacion, pero no siempre es comodo para leer durante mucho tiempo. Markit busca cubrir ese espacio: una herramienta directa, moderna y enfocada en lectura.
+Los archivos Markdown son rapidos de procesar porque son texto plano. Eso los vuelve ideales para documentacion, apuntes, guias tecnicas y material de estudio. El problema aparece al momento de leerlos: muchas herramientas estan pensadas para editar codigo, funcionan online o viven dentro de un IDE, donde se pierde el proposito de abrir el archivo de forma simple y concentrarse solamente en el contenido.
+
+Markit busca cubrir ese espacio: un visualizador de Markdown para leer comodamente como si fuera un libro o un apunte, con zoom, pantalla completa y resaltadores para estudiar. Aunque permite guardar cambios necesarios, como los resaltados, su foco principal no es modificar el documento sino visualizarlo, recorrerlo y marcar lo importante sin romper el flujo de lectura.
 
 ## Autor
 
