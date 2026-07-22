@@ -8,6 +8,15 @@ El proyecto sigue versionado semantico de forma simple:
 - `MINOR`: nuevas funcionalidades compatibles.
 - `PATCH`: correcciones y mejoras pequenas.
 
+## [Unreleased]
+
+### Preparacion multiplataforma
+
+- Se agrego `Markit.Core` como primera libreria compartida `net8.0`.
+- Se movio la logica de archivos y extensiones soportadas a `Markit.Core`.
+- Se agrego `Markit.slnx` para ordenar los proyectos del repositorio.
+- Se documento el plan tecnico de port a Linux en `docs/linux-port.md`.
+
 ## [0.1.0] - 2026-07-21
 
 ### Linea base inicial

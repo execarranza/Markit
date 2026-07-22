@@ -1,8 +1,8 @@
 using System.IO;
 
-namespace ReadmeReader;
+namespace Markit.Core;
 
-internal static class DocumentFileService
+public static class DocumentFileService
 {
     public const string OpenFilter = "Markdown (*.md;*.markdown;*.mdown)|*.md;*.markdown;*.mdown|Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*";
 
@@ -43,8 +43,8 @@ internal static class DocumentFileService
         {
             FileNotFoundException => "No encontre el archivo indicado.",
             DirectoryNotFoundException => "No encontre la carpeta del archivo.",
-            UnauthorizedAccessException => "Windows no permite acceder a ese archivo con los permisos actuales.",
-            IOException => "Windows no pudo completar la operacion de archivo.",
+            UnauthorizedAccessException => "No se pudo acceder a ese archivo con los permisos actuales.",
+            IOException => "No se pudo completar la operacion de archivo.",
             _ => "Ocurrio un error inesperado al trabajar con el archivo."
         };
     }

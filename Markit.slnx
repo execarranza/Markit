@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Markit.Core/Markit.Core.csproj" />
+  <Project Path="ReadmeReader/ReadmeReader.csproj" />
+</Solution>

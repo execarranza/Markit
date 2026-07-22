@@ -13,7 +13,7 @@ La idea es simple: leer Markdown con una experiencia comoda, parecida a un lecto
 | Sistema | Estado | Nota |
 |---|---|---|
 | Windows x64 | Soportado en `v0.1.0` | Version actual basada en WPF y .NET 8 |
-| Linux | Roadmap | No hay instalador Linux todavia |
+| Linux | En preparacion | Base compartida iniciada en `Markit.Core`; no hay instalador Linux todavia |
 | macOS | No planificado | Podria evaluarse luego de resolver multiplataforma |
 
 La primera linea base de Markit esta enfocada en Windows porque WPF es una tecnologia especifica de Windows. La instalacion en Linux queda marcada como evolucion futura y requiere evaluar una base multiplataforma o una variante de interfaz compatible.
@@ -73,6 +73,8 @@ Posibles caminos tecnicos:
 - separar el motor de lectura/renderizado Markdown de la interfaz WPF;
 - evaluar una UI multiplataforma de escritorio;
 - generar paquetes instalables para distribuciones Linux cuando exista una base compatible.
+
+Ver el plan tecnico en [docs/linux-port.md](docs/linux-port.md).
 
 ### Compilar desde codigo
 
@@ -220,6 +222,10 @@ El objetivo de esta etapa no es cubrir todos los escenarios posibles, sino dejar
 Markit mantiene una arquitectura deliberadamente simple para una aplicacion de escritorio chica.
 
 ```text
+Markit.slnx
+Markit.Core/
+  Markit.Core.csproj
+  DocumentFileService.cs
 ReadmeReader/
   App.xaml
   App.xaml.cs
@@ -228,7 +234,6 @@ ReadmeReader/
   InstallerWindow.xaml
   InstallerWindow.xaml.cs
   MarkdownDocumentRenderer.cs
-  DocumentFileService.cs
   UserSettings.cs
   AppInstaller.cs
   app.manifest
@@ -237,13 +242,13 @@ ReadmeReader/
 
 | Archivo | Responsabilidad |
 |---|---|
+| `Markit.Core/DocumentFileService.cs` | Logica compartida de archivos, extensiones soportadas, lectura/escritura y errores |
 | `App.xaml.cs` | Arranque de la aplicacion, modo instalador/desinstalador y apertura por argumento |
 | `MainWindow.xaml` | Estructura visual, toolbar, lector, controles y accesibilidad basica |
 | `MainWindow.xaml.cs` | Coordinacion de UI, comandos, busqueda, resaltado, tema, pantalla completa y estado visual |
 | `InstallerWindow.xaml` | Experiencia visual del instalador |
 | `InstallerWindow.xaml.cs` | Flujo de instalacion, progreso y seleccion de carpeta |
 | `MarkdownDocumentRenderer.cs` | Conversion de Markdown a `FlowDocument` |
-| `DocumentFileService.cs` | Filtros, extensiones soportadas, lectura/escritura y errores de archivo |
 | `UserSettings.cs` | Persistencia local de preferencias y recientes |
 | `AppInstaller.cs` | Instalacion local y asociacion de archivos Markdown |
 | `app.manifest` | Declaracion DPI PerMonitorV2 para Windows |
@@ -293,6 +298,7 @@ Logo para fondos oscuros:
 - Version instalable para Linux.
 - Evaluacion de una base multiplataforma para escritorio.
 - Separacion progresiva entre motor de renderizado Markdown y capa visual.
+- Migracion gradual de logica compartida hacia `Markit.Core`.
 - Mejoras de renderizado Markdown.
 - Soporte para mas sintaxis de Markdown.
 - Exportacion a PDF.

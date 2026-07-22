@@ -7,6 +7,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
+using Markit.Core;
 using Microsoft.Win32;
 
 namespace ReadmeReader;

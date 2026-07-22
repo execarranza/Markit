@@ -23,4 +23,8 @@
     <Resource Include="Assets\markit-logo-horizontal-dark.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Markit.Core\Markit.Core.csproj" />
+  </ItemGroup>
+
 </Project>
