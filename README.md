@@ -33,6 +33,14 @@ El proyecto prioriza:
 - integracion nativa con Windows;
 - una base tecnica clara para seguir creciendo.
 
+## Estado del proyecto
+
+Version actual: **v0.1.0**
+
+Esta primera version marca la linea base del proyecto: una aplicacion de escritorio funcional para Windows, construida con WPF y .NET 8, orientada a visualizar archivos Markdown de forma comoda.
+
+El objetivo de esta etapa no es cubrir todos los escenarios posibles, sino dejar una base usable, simple y evolucionable para seguir mejorando la experiencia de lectura.
+
 ## Funcionalidades
 
 - Apertura de archivos `.md`, `.markdown`, `.mdown` y `.txt`.
@@ -113,6 +121,8 @@ El proyecto prioriza:
 - **DPI:** manifest con `PerMonitorV2`
 - **Privacidad:** sin telemetria
 - **Dependencias externas:** sin paquetes NuGet adicionales
+
+> Nota: la version actual esta enfocada en Windows porque WPF es una tecnologia especifica de Windows. La compatibilidad con Linux queda planteada como evolucion futura y requerira evaluar una base multiplataforma o una variante de interfaz compatible.
 
 ## Arquitectura
 
@@ -239,6 +249,9 @@ Logo para fondos oscuros:
 
 ## Roadmap posible
 
+- Version instalable para Linux.
+- Evaluacion de una base multiplataforma para escritorio.
+- Separacion progresiva entre motor de renderizado Markdown y capa visual.
 - Mejoras de renderizado Markdown.
 - Soporte para mas sintaxis de Markdown.
 - Exportacion a PDF.
