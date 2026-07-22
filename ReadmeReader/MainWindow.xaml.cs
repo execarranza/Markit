@@ -1185,20 +1185,20 @@ public partial class MainWindow : Window
 
     private void ApplyChromeTheme()
     {
-        var windowBackground = Brush(isDarkMode ? "#111110" : "#E7EBF0");
-        var toolbarBackground = Brush(isDarkMode ? "#181716" : "#F8FAFC");
-        var toolbarBorder = Brush(isDarkMode ? "#2B2926" : "#CBD5E1");
+        var windowBackground = Brush(isDarkMode ? "#111110" : "#EEF6FF");
+        var toolbarBackground = Brush(isDarkMode ? "#181716" : "#FFFFFF");
+        var toolbarBorder = Brush(isDarkMode ? "#2B2926" : "#C6D9EE");
         var documentBackground = Brush(isDarkMode ? "#1B1A18" : "#FFFFFF");
-        var documentBorder = Brush(isDarkMode ? "#3A3732" : "#D5DCE5");
-        var text = Brush(isDarkMode ? "#D8D2C7" : "#475569");
+        var documentBorder = Brush(isDarkMode ? "#3A3732" : "#C8DAEE");
+        var text = Brush(isDarkMode ? "#D8D2C7" : "#4A617C");
         var buttonBackground = Brush(isDarkMode ? "#24221F" : "#FFFFFF");
-        var buttonBorder = Brush(isDarkMode ? "#48443D" : "#CBD5E1");
-        var buttonText = Brush(isDarkMode ? "#ECE7DE" : "#1F2937");
-        var mutedText = Brush(isDarkMode ? "#A8A29E" : "#64748B");
-        var hoverBackground = Brush(isDarkMode ? "#2E2A25" : "#F1F5F9");
-        var selectedBackground = Brush(isDarkMode ? "#4B3F20" : "#EAF2FF");
-        var selectedText = Brush(isDarkMode ? "#FFF7E8" : "#0F172A");
-        var disabledBackground = Brush(isDarkMode ? "#211F1C" : "#E2E8F0");
+        var buttonBorder = Brush(isDarkMode ? "#48443D" : "#C6D9EE");
+        var buttonText = Brush(isDarkMode ? "#ECE7DE" : "#0B1F3A");
+        var mutedText = Brush(isDarkMode ? "#A8A29E" : "#5B708A");
+        var hoverBackground = Brush(isDarkMode ? "#2E2A25" : "#EEF7FF");
+        var selectedBackground = Brush(isDarkMode ? "#4B3F20" : "#D9EEFF");
+        var selectedText = Brush(isDarkMode ? "#FFF7E8" : "#06172C");
+        var disabledBackground = Brush(isDarkMode ? "#211F1C" : "#E7EEF6");
 
         Resources["ControlBackgroundBrush"] = buttonBackground;
         Resources["ControlBorderBrush"] = buttonBorder;
@@ -1258,11 +1258,11 @@ public partial class MainWindow : Window
         ApplyComboBoxTheme(
             comboBox,
             Brush(isDarkMode ? "#24221F" : "#FFFFFF"),
-            Brush(isDarkMode ? "#48443D" : "#CBD5E1"),
-            Brush(isDarkMode ? "#ECE7DE" : "#1F2937"),
-            Brush(isDarkMode ? "#4B3F20" : "#EAF2FF"),
-            Brush(isDarkMode ? "#FFF7E8" : "#0F172A"),
-            Brush(isDarkMode ? "#A8A29E" : "#64748B"));
+            Brush(isDarkMode ? "#48443D" : "#C6D9EE"),
+            Brush(isDarkMode ? "#ECE7DE" : "#0B1F3A"),
+            Brush(isDarkMode ? "#4B3F20" : "#D9EEFF"),
+            Brush(isDarkMode ? "#FFF7E8" : "#06172C"),
+            Brush(isDarkMode ? "#A8A29E" : "#5B708A"));
     }
 
     private void ApplyComboBoxTheme(

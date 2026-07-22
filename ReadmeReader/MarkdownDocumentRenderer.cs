@@ -761,17 +761,17 @@ internal static class MarkdownDocumentRenderer
 
         public static DocumentColors Light() => new()
         {
-            BodyBrush = Brush("#243041"),
-            HeadingBrush = Brush("#111827"),
-            MutedBrush = Brush("#64748B"),
-            BorderBrush = Brush("#D8DEE8"),
-            CodeBackground = Brush("#F1F5F9"),
-            CodeTextBrush = Brush("#182235"),
-            LinkBrush = Brush("#0B63CE"),
-            QuoteBorderBrush = Brush("#94A3B8"),
-            QuoteBackgroundBrush = Brush("#F8FAFC"),
-            TableHeaderBrush = Brush("#EAF0F7"),
-            TableAlternateRowBrush = Brush("#F8FAFC"),
+            BodyBrush = Brush("#24364E"),
+            HeadingBrush = Brush("#071A33"),
+            MutedBrush = Brush("#5B708A"),
+            BorderBrush = Brush("#C8DAEE"),
+            CodeBackground = Brush("#F4F9FF"),
+            CodeTextBrush = Brush("#10243D"),
+            LinkBrush = Brush("#006EDB"),
+            QuoteBorderBrush = Brush("#0EA5E9"),
+            QuoteBackgroundBrush = Brush("#F3FAFF"),
+            TableHeaderBrush = Brush("#E6F3FF"),
+            TableAlternateRowBrush = Brush("#F7FBFF"),
             DocumentBackground = Brush("#FFFFFF")
         };
 

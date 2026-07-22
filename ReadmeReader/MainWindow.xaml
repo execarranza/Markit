@@ -7,7 +7,7 @@
         MinHeight="560"
         Width="1180"
         MinWidth="860"
-        Background="#E7EBF0"
+        Background="#EEF6FF"
         AllowDrop="True"
         Drop="Window_Drop"
         DragOver="Window_DragOver"
@@ -15,37 +15,38 @@
         PreviewMouseWheel="Window_PreviewMouseWheel">
     <Window.Resources>
         <SolidColorBrush x:Key="ControlBackgroundBrush" Color="#FFFFFF" />
-        <SolidColorBrush x:Key="ControlBorderBrush" Color="#CBD5E1" />
-        <SolidColorBrush x:Key="ControlTextBrush" Color="#1F2937" />
-        <SolidColorBrush x:Key="MutedTextBrush" Color="#64748B" />
-        <SolidColorBrush x:Key="ControlHoverBrush" Color="#F8FAFC" />
-        <SolidColorBrush x:Key="ControlSelectionBrush" Color="#EAF2FF" />
-        <SolidColorBrush x:Key="ControlSelectionTextBrush" Color="#0F172A" />
-        <SolidColorBrush x:Key="ControlDisabledBrush" Color="#E2E8F0" />
+        <SolidColorBrush x:Key="ControlBorderBrush" Color="#C6D9EE" />
+        <SolidColorBrush x:Key="ControlTextBrush" Color="#0B1F3A" />
+        <SolidColorBrush x:Key="MutedTextBrush" Color="#5B708A" />
+        <SolidColorBrush x:Key="ControlHoverBrush" Color="#EEF7FF" />
+        <SolidColorBrush x:Key="ControlSelectionBrush" Color="#D9EEFF" />
+        <SolidColorBrush x:Key="ControlSelectionTextBrush" Color="#06172C" />
+        <SolidColorBrush x:Key="ControlDisabledBrush" Color="#E7EEF6" />
 
         <Style x:Key="ToolbarFocusVisual" TargetType="{x:Type Control}">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate>
                         <Rectangle Margin="1"
-                                   Stroke="#2563EB"
+                                   Stroke="#0EA5E9"
                                    StrokeThickness="2"
-                                   RadiusX="5"
-                                   RadiusY="5" />
+                                   RadiusX="8"
+                                   RadiusY="8" />
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
 
         <Style x:Key="ToolbarButton" TargetType="Button">
-            <Setter Property="Height" Value="36" />
-            <Setter Property="Padding" Value="10,0" />
+            <Setter Property="Height" Value="38" />
+            <Setter Property="Padding" Value="12,0" />
             <Setter Property="Margin" Value="0,0,8,8" />
             <Setter Property="Background" Value="#FFFFFF" />
-            <Setter Property="BorderBrush" Value="#CBD5E1" />
-            <Setter Property="Foreground" Value="#1F2937" />
+            <Setter Property="BorderBrush" Value="#C6D9EE" />
+            <Setter Property="Foreground" Value="#0B1F3A" />
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="FontSize" Value="13" />
+            <Setter Property="FontWeight" Value="SemiBold" />
             <Setter Property="Cursor" Value="Hand" />
             <Setter Property="FocusVisualStyle" Value="{StaticResource ToolbarFocusVisual}" />
             <Setter Property="Template">
@@ -55,6 +56,7 @@
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="8"
                                 SnapsToDevicePixels="True">
                             <ContentPresenter x:Name="ContentSite"
                                               HorizontalAlignment="Center"
@@ -86,7 +88,7 @@
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsKeyboardFocused" Value="True">
-                    <Setter Property="BorderBrush" Value="#2563EB" />
+                    <Setter Property="BorderBrush" Value="#0EA5E9" />
                     <Setter Property="BorderThickness" Value="2" />
                 </Trigger>
                 <Trigger Property="IsEnabled" Value="False">
@@ -135,6 +137,7 @@
                                     Background="{TemplateBinding Background}"
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="1"
+                                    CornerRadius="8"
                                     SnapsToDevicePixels="True">
                                 <Grid>
                                     <ContentPresenter x:Name="ContentSite"
@@ -174,6 +177,7 @@
                                 <Border Background="{TemplateBinding Background}"
                                         BorderBrush="{TemplateBinding BorderBrush}"
                                         BorderThickness="1"
+                                        CornerRadius="8"
                                         MinWidth="{Binding ActualWidth, RelativeSource={RelativeSource TemplatedParent}}"
                                         MaxHeight="{TemplateBinding MaxDropDownHeight}">
                                     <ScrollViewer CanContentScroll="True"
@@ -245,7 +249,7 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="Outer" Property="BorderBrush" Value="#111827" />
+                                <Setter TargetName="Outer" Property="BorderBrush" Value="#0EA5E9" />
                                 <Setter TargetName="Outer" Property="BorderThickness" Value="2" />
                                 <Setter TargetName="Inner" Property="Opacity" Value="1" />
                             </Trigger>
@@ -253,7 +257,7 @@
                                 <Setter TargetName="Outer" Property="BorderBrush" Value="#475569" />
                             </Trigger>
                             <Trigger Property="IsKeyboardFocused" Value="True">
-                                <Setter TargetName="Outer" Property="BorderBrush" Value="#2563EB" />
+                                <Setter TargetName="Outer" Property="BorderBrush" Value="#0EA5E9" />
                                 <Setter TargetName="Outer" Property="BorderThickness" Value="2" />
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -276,8 +280,8 @@
                                 Width="58"
                                 Height="30"
                                 CornerRadius="15"
-                                Background="#CBD5E1"
-                                BorderBrush="#94A3B8"
+                                Background="#D6E5F4"
+                                BorderBrush="#A9BED6"
                                 BorderThickness="1">
                             <Grid>
                                 <Ellipse x:Name="Knob"
@@ -299,7 +303,7 @@
                                 <Setter TargetName="Track" Property="BorderBrush" Value="#A8A29E" />
                             </Trigger>
                             <Trigger Property="IsKeyboardFocused" Value="True">
-                                <Setter TargetName="Track" Property="BorderBrush" Value="#2563EB" />
+                                <Setter TargetName="Track" Property="BorderBrush" Value="#0EA5E9" />
                                 <Setter TargetName="Track" Property="BorderThickness" Value="2" />
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -318,10 +322,10 @@
 
         <Border x:Name="Toolbar"
                 Grid.Row="0"
-                Background="#F8FAFC"
-                BorderBrush="#CBD5E1"
+                Background="#FFFFFF"
+                BorderBrush="#C6D9EE"
                 BorderThickness="0,0,0,1"
-                Padding="12,10,12,8">
+                Padding="14,12,14,8">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -545,8 +549,9 @@
                         Margin="0,4,0,8"
                         Padding="10,8"
                         Background="#FFFFFF"
-                        BorderBrush="#CBD5E1"
+                        BorderBrush="#C6D9EE"
                         BorderThickness="1"
+                        CornerRadius="8"
                         Visibility="Collapsed"
                         KeyboardNavigation.TabNavigation="Continue">
                     <StackPanel Orientation="Horizontal">
@@ -556,7 +561,7 @@
                                  Margin="0,0,8,0"
                                  Padding="10,6"
                                  VerticalContentAlignment="Center"
-                                 BorderBrush="#CBD5E1"
+                                 BorderBrush="#C6D9EE"
                                  AutomationProperties.Name="Buscar texto"
                                  AutomationProperties.HelpText="Escribe texto y presiona Enter para buscar en el documento"
                                  TextChanged="SearchBox_TextChanged"
@@ -610,10 +615,11 @@
 
         <Border x:Name="DocumentFrame"
                 Grid.Row="1"
-                Margin="24"
+                Margin="22"
                 Background="#FFFFFF"
-                BorderBrush="#D5DCE5"
-                BorderThickness="1">
+                BorderBrush="#C8DAEE"
+                BorderThickness="1"
+                CornerRadius="8">
             <FlowDocumentScrollViewer x:Name="Viewer"
                                       Padding="0"
                                       Background="#FFFFFF"
@@ -636,7 +642,7 @@
                 Margin="0,18,0,0"
                 Padding="10,8,2,0"
                 Background="#F8FAFC"
-                BorderBrush="#CBD5E1"
+                BorderBrush="#C6D9EE"
                 BorderThickness="1"
                 CornerRadius="8"
                 Visibility="Collapsed"

@@ -10,6 +10,18 @@ El proyecto sigue versionado semantico de forma simple:
 
 ## [Unreleased]
 
+### Documentacion de producto
+
+- Se amplio el posicionamiento de Markit como lector de apuntes Markdown generados por IA.
+- Se documento el valor de Markdown como formato liviano, legible y amigable para flujos con IA.
+- Se agregaron evolutivos vinculados a resaltados, estudio y preparacion de contexto para IA.
+- Se agregaron imagenes promocionales claras y oscuras en `docs/assets`.
+
+### UI
+
+- Se modernizo el modo claro con una paleta blanca/azul/cian inspirada en el material promocional.
+- Se mantuvo el modo oscuro con la paleta oscura anterior para conservar comodidad de lectura.
+
 ### Preparacion multiplataforma
 
 - Se agrego `Markit.Core` como primera libreria compartida `net8.0`.

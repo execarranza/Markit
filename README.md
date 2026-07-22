@@ -4,7 +4,7 @@
 
 **markit** es un lector open source de archivos Markdown para Windows. Esta pensado para abrir documentos `.md` con formato, zoom, busqueda, resaltado, modo claro/oscuro y pantalla completa, sin depender de Visual Studio Code, extensiones, navegadores ni herramientas pesadas.
 
-La idea es simple: leer Markdown con una experiencia comoda, parecida a un lector PDF liviano o a un apunte digital, pero conservando la ventaja de que el archivo sigue siendo texto plano.
+La idea es simple: leer Markdown con una experiencia comoda, parecida a un lector PDF liviano o a un apunte digital, pero conservando la ventaja de que el archivo sigue siendo texto plano: liviano, rapido de abrir, facil de versionar y amigable para flujos de trabajo con IA.
 
 ## Instalacion y uso
 
@@ -103,11 +103,30 @@ ReadmeReader/bin/Release/net8.0-windows/win-x64/publish/ReadmeReader.exe
 
 ## Por que nace
 
-Markit nace de una necesidad cotidiana: abrir un README, una nota tecnica, una guia de estudio o documentacion de proyecto sin tener que cargar un editor completo.
+Markit nace de una necesidad cotidiana: estudiar y leer apuntes generados en Markdown, como README, notas tecnicas, guias de estudio o documentacion de proyecto, sin tener que cargar un editor completo.
 
-Los archivos Markdown son rapidos de procesar porque son texto plano. Eso los vuelve ideales para documentacion, apuntes, guias tecnicas y material de estudio. El problema aparece al momento de leerlos: muchas herramientas estan pensadas para editar codigo, funcionan online o viven dentro de un IDE, donde se pierde el proposito de abrir el archivo de forma simple y concentrarse solamente en el contenido.
+Los archivos Markdown son rapidos de procesar porque son texto plano. Pesan menos que muchos formatos documentales, se abren rapido, se pueden leer sin extensiones especiales y hoy se usan mucho para comunicar documentacion, compartir contexto tecnico y trabajar con herramientas de IA.
+
+El problema aparece al momento de leerlos durante mucho tiempo: muchas herramientas estan pensadas para editar codigo, funcionan online o viven dentro de un IDE, donde se pierde el proposito de abrir el archivo de forma simple y concentrarse solamente en el contenido.
 
 Markit busca cubrir ese espacio: un visualizador de Markdown para leer comodamente como si fuera un libro o un apunte, con zoom, pantalla completa y resaltadores para estudiar. Aunque permite guardar cambios necesarios, como los resaltados, su foco principal no es modificar el documento sino visualizarlo, recorrerlo y marcar lo importante sin romper el flujo de lectura.
+
+La necesidad aparece especialmente cuando los apuntes nacen de IA: en lugar de pedir PDFs pesados que requieren mas procesamiento, se puede trabajar con Markdown liviano, legible y estructurado. Ademas, cuando lo importante queda marcado dentro del propio `.md`, ese resaltado tambien puede servir como senal para futuras lecturas humanas o para que una IA identifique mejor que partes del documento tienen mayor relevancia.
+
+## Markdown e IA
+
+Markit se apoya en una idea cada vez mas comun: Markdown funciona muy bien como formato puente entre personas, codigo, documentacion e inteligencia artificial.
+
+Beneficios practicos:
+
+- es texto plano y suele ocupar poco espacio;
+- no requiere conversion compleja para leer el contenido;
+- conserva estructura semantica simple mediante titulos, listas, tablas, citas y bloques de codigo;
+- evita depender de PDFs pesados cuando el objetivo principal es estudiar o revisar contenido;
+- facilita que una IA procese el documento sin tener que extraer texto desde un formato binario o maquetado;
+- permite que los resaltados queden dentro del archivo como marcas explicitas de importancia.
+
+En terminos de IA, Markdown no garantiza automaticamente menos tokens, porque los tokens dependen del contenido real del texto. Aun asi, suele ser mas directo y limpio que un PDF para pasar contexto, ya que evita capas de extraccion, maquetado y ruido visual.
 
 ## Autor
 
@@ -280,6 +299,8 @@ Los resaltados se guardan directamente en el Markdown como HTML compatible:
 
 Esto permite conservar el resaltado sin crear una base de datos adicional ni archivos paralelos.
 
+Tambien deja una base interesante para flujos futuros con IA: el contenido dentro de `<mark>` podria tratarse como material prioritario para resumenes, preguntas de estudio, repasos o extraccion de puntos clave.
+
 ## Assets
 
 ```text
@@ -287,11 +308,25 @@ ReadmeReader/Assets/
   markit.ico
   markit-logo-horizontal-light.png
   markit-logo-horizontal-dark.png
+
+docs/assets/
+  markit-promo-light.png
+  markit-promo-dark.png
 ```
 
 Logo para fondos oscuros:
 
 ![markit logo oscuro](ReadmeReader/Assets/markit-logo-horizontal-dark.png)
+
+## Material promocional
+
+Version clara:
+
+![markit promocional claro](docs/assets/markit-promo-light.png)
+
+Version oscura:
+
+![markit promocional oscuro](docs/assets/markit-promo-dark.png)
 
 ## Roadmap posible
 
@@ -302,6 +337,11 @@ Logo para fondos oscuros:
 - Mejoras de renderizado Markdown.
 - Soporte para mas sintaxis de Markdown.
 - Exportacion a PDF.
+- Exportacion de solo resaltados.
+- Resumen de contenido resaltado.
+- Modo estudio basado en marcas importantes.
+- Generacion de prompts o contexto para IA a partir del Markdown resaltado.
+- Priorizar contenido `<mark>` al preparar extractos para IA.
 - Instalador firmado.
 - Publicacion de releases en GitHub.
 - Mejoras de accesibilidad avanzada.
