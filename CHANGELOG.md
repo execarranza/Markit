@@ -14,6 +14,7 @@ El proyecto sigue versionado semantico de forma simple:
 
 - Se amplio el posicionamiento de Markit como lector de apuntes Markdown generados por IA.
 - Se documento el valor de Markdown como formato liviano, legible y amigable para flujos con IA.
+- Se reescribio la seccion "Por que nace" con foco en el flujo generar, estudiar, resaltar y reutilizar Markdown.
 - Se agregaron evolutivos vinculados a resaltados, estudio y preparacion de contexto para IA.
 - Se agregaron imagenes promocionales claras y oscuras en `docs/assets`.
 

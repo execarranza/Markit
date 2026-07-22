@@ -103,15 +103,38 @@ ReadmeReader/bin/Release/net8.0-windows/win-x64/publish/ReadmeReader.exe
 
 ## Por que nace
 
-Markit nace de una necesidad cotidiana: estudiar y leer apuntes generados en Markdown, como README, notas tecnicas, guias de estudio o documentacion de proyecto, sin tener que cargar un editor completo.
+Markit nace de una necesidad concreta: estudiar de manera comoda apuntes y documentos generados con inteligencia artificial en formato Markdown.
 
-Los archivos Markdown son rapidos de procesar porque son texto plano. Pesan menos que muchos formatos documentales, se abren rapido, se pueden leer sin extensiones especiales y hoy se usan mucho para comunicar documentacion, compartir contexto tecnico y trabajar con herramientas de IA.
+Hoy Markdown se utiliza cada vez mas para crear documentacion, compartir conocimiento y comunicarse con herramientas de inteligencia artificial. Es un formato simple, abierto y basado en texto plano, que permite conservar titulos, listas, tablas, codigo y otros elementos estructurados sin generar archivos pesados ni depender de formatos complejos.
 
-El problema aparece al momento de leerlos durante mucho tiempo: muchas herramientas estan pensadas para editar codigo, funcionan online o viven dentro de un IDE, donde se pierde el proposito de abrir el archivo de forma simple y concentrarse solamente en el contenido.
+Sin embargo, aunque los archivos `.md` son practicos para almacenar, compartir y procesar informacion, no siempre resultan comodos para leer y estudiar directamente desde un editor de codigo.
 
-Markit busca cubrir ese espacio: un visualizador de Markdown para leer comodamente como si fuera un libro o un apunte, con zoom, pantalla completa y resaltadores para estudiar. Aunque permite guardar cambios necesarios, como los resaltados, su foco principal no es modificar el documento sino visualizarlo, recorrerlo y marcar lo importante sin romper el flujo de lectura.
+Por eso nace Markit.
 
-La necesidad aparece especialmente cuando los apuntes nacen de IA: en lugar de pedir PDFs pesados que requieren mas procesamiento, se puede trabajar con Markdown liviano, legible y estructurado. Ademas, cuando lo importante queda marcado dentro del propio `.md`, ese resaltado tambien puede servir como senal para futuras lecturas humanas o para que una IA identifique mejor que partes del documento tienen mayor relevancia.
+Markit permite abrir archivos Markdown como si fueran apuntes digitales: con una experiencia de lectura limpia, zoom, busqueda, pantalla completa, modo claro y oscuro, y herramientas para resaltar el contenido mas importante.
+
+Los resaltados pueden guardarse dentro del mismo archivo sin dejar de ser Markdown. El documento continua siendo liviano, portable, editable y reutilizable.
+
+Esto permite completar un flujo de estudio:
+
+1. Generar apuntes con inteligencia artificial.
+2. Guardarlos directamente como archivos Markdown.
+3. Abrirlos y estudiarlos con Markit.
+4. Resaltar conceptos, definiciones o fragmentos importantes.
+5. Guardar nuevamente el archivo conservando esos resaltados.
+6. Volver a compartir el documento con una IA para resumir, repasar o trabajar especialmente sobre el contenido destacado.
+
+De esta manera, no es necesario pedir constantemente la generacion de documentos PDF mas pesados, que requieren maquetacion, exportacion y procesamiento adicional.
+
+Markit propone una forma mas simple de trabajar con el conocimiento: generar, leer, estudiar, resaltar, guardar y reutilizar informacion sin abandonar el formato Markdown.
+
+## Propuesta de valor
+
+**Markit convierte los apuntes Markdown generados con inteligencia artificial en una experiencia de estudio comoda, rapida y reutilizable.**
+
+Menos formatos intermedios. Menos procesamiento innecesario. Mas foco en el contenido.
+
+**Genera en Markdown. Estudia con Markit.**
 
 ## Markdown e IA
 
