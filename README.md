@@ -331,25 +331,11 @@ ReadmeReader/Assets/
   markit.ico
   markit-logo-horizontal-light.png
   markit-logo-horizontal-dark.png
-
-docs/assets/
-  markit-promo-light.png
-  markit-promo-dark.png
 ```
 
 Logo para fondos oscuros:
 
 ![markit logo oscuro](ReadmeReader/Assets/markit-logo-horizontal-dark.png)
-
-## Material promocional
-
-Version clara:
-
-![markit promocional claro](docs/assets/markit-promo-light.png)
-
-Version oscura:
-
-![markit promocional oscuro](docs/assets/markit-promo-dark.png)
 
 ## Roadmap posible
 
