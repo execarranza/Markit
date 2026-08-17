@@ -20,15 +20,22 @@ La primera linea base de Markit esta enfocada en Windows porque WPF es una tecno
 
 ### Instalar en Windows
 
-El instalador se genera como ejecutable single-file para Windows x64.
+El instalador Windows x64 esta incluido en el repositorio:
+
+```text
+dist/MarkitInstaller.exe
+```
+
+Para instalar Markit, descargar el repositorio y ejecutar `dist/MarkitInstaller.exe`.
+
+Tambien se puede regenerar como ejecutable single-file para Windows x64 desde el codigo fuente.
 
 Flujo esperado:
 
-1. Compilar y publicar la app.
-2. Copiar el ejecutable publicado como `MarkitInstaller.exe`.
-3. Ejecutar el instalador.
-4. Elegir la carpeta de instalacion o aceptar la ubicacion por defecto.
-5. Asociar archivos Markdown con Markit para el usuario actual.
+1. Descargar o clonar el repositorio.
+2. Ejecutar `dist/MarkitInstaller.exe`.
+3. Elegir la carpeta de instalacion o aceptar la ubicacion por defecto.
+4. Asociar archivos Markdown con Markit para el usuario actual.
 
 Ubicacion por defecto:
 
@@ -52,6 +59,7 @@ Comandos soportados:
 5. Usar busqueda para encontrar contenido.
 6. Resaltar fragmentos importantes como si fuera un apunte.
 7. Guardar el Markdown si se quieren conservar los resaltados.
+8. Exportar una copia PDF cuando se necesite compartir o leer el documento en formato fijo.
 
 Markit esta pensado principalmente para visualizar y estudiar documentos Markdown. La edicion existe como apoyo para guardar resaltados o cambios puntuales, pero el foco del proyecto no es reemplazar un editor de texto ni un IDE.
 
@@ -210,6 +218,7 @@ El objetivo de esta etapa no es cubrir todos los escenarios posibles, sino dejar
 - Goma para quitar resaltados.
 - Guardado del Markdown modificado.
 - Guardar como.
+- Exportacion a PDF.
 - Impresion desde dialogo nativo.
 - Archivos recientes.
 - Persistencia de preferencias:
@@ -345,7 +354,6 @@ Logo para fondos oscuros:
 - Migracion gradual de logica compartida hacia `Markit.Core`.
 - Mejoras de renderizado Markdown.
 - Soporte para mas sintaxis de Markdown.
-- Exportacion a PDF.
 - Exportacion de solo resaltados.
 - Resumen de contenido resaltado.
 - Modo estudio basado en marcas importantes.

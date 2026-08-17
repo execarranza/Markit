@@ -405,6 +405,17 @@
                             <TextBlock Text="Imprimir" />
                         </StackPanel>
                     </Button>
+                    <Button x:Name="ExportPdfButton"
+                            Style="{StaticResource ToolbarButton}"
+                            AutomationProperties.Name="Exportar documento a PDF"
+                            AutomationProperties.HelpText="Genera una copia PDF del Markdown actual"
+                            ToolTip="Exportar PDF"
+                            Click="ExportPdfButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Style="{StaticResource ToolbarIcon}" Text="&#xE8A5;" />
+                            <TextBlock Text="Exportar PDF" />
+                        </StackPanel>
+                    </Button>
 
                     <Border Width="1" Height="28" Margin="2,4,10,12" Background="#CBD5E1" />
 

@@ -95,6 +95,8 @@ public partial class MainWindow : Window
 
     private void SaveAsButton_Click(object sender, RoutedEventArgs e) => SaveAs();
 
+    private void ExportPdfButton_Click(object sender, RoutedEventArgs e) => ExportPdf();
+
     private void RecentFilesBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         if (isUpdatingRecentFiles || RecentFilesBox.SelectedItem is not ComboBoxItem { Tag: string fileName })
@@ -661,8 +663,7 @@ public partial class MainWindow : Window
 
         if (!TryFindSelectedMarkdownRange(selectedText, out var selectedStart, out var selectedLength))
         {
-            return TryFindMarkForSelectedText(selectedText, out var markStart, out var markLength, out var markInner)
-                && AddSingleMark(markStart, markLength, markInner, marks);
+            return TryFindMarksByVisibleSelection(selectedText, marks);
         }
 
         var selectedEnd = selectedStart + selectedLength;
@@ -680,6 +681,53 @@ public partial class MainWindow : Window
         }
 
         return marks.Count > 0;
+    }
+
+    private bool TryFindMarksByVisibleSelection(string selectedText, List<(int Start, int Length, string InnerMarkdown)> marks)
+    {
+        var selectedVisible = NormalizeForComparison(selectedText);
+        if (string.IsNullOrWhiteSpace(selectedVisible))
+        {
+            return false;
+        }
+
+        var matches = Regex.Matches(currentMarkdown, @"<mark\b[^>]*>(?<inner>.*?)</mark>", RegexOptions.IgnoreCase | RegexOptions.Singleline);
+        Match? partialMatch = null;
+        var partialMatches = 0;
+
+        foreach (Match match in matches)
+        {
+            var inner = match.Groups["inner"].Value;
+            var innerVisible = NormalizeForComparison(BuildVisibleMarkdownMap(inner).VisibleText);
+            if (string.IsNullOrWhiteSpace(innerVisible))
+            {
+                continue;
+            }
+
+            if (selectedVisible.Contains(innerVisible, StringComparison.CurrentCultureIgnoreCase))
+            {
+                AddSingleMark(match.Index, match.Length, inner, marks);
+                continue;
+            }
+
+            if (innerVisible.Contains(selectedVisible, StringComparison.CurrentCultureIgnoreCase))
+            {
+                partialMatch = match;
+                partialMatches++;
+            }
+        }
+
+        if (marks.Count > 0)
+        {
+            return true;
+        }
+
+        if (partialMatch is not null && partialMatches == 1)
+        {
+            return AddSingleMark(partialMatch.Index, partialMatch.Length, partialMatch.Groups["inner"].Value, marks);
+        }
+
+        return false;
     }
 
     private static bool AddSingleMark(int start, int length, string innerMarkdown, List<(int Start, int Length, string InnerMarkdown)> marks)
@@ -1060,6 +1108,45 @@ public partial class MainWindow : Window
 
         currentFile = dialog.FileName;
         Save();
+    }
+
+    private void ExportPdf()
+    {
+        if (string.IsNullOrWhiteSpace(currentMarkdown))
+        {
+            MessageBox.Show(
+                "No hay contenido Markdown para exportar.",
+                "Exportar PDF",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information);
+            return;
+        }
+
+        var sourceName = currentFile is null ? "markit" : Path.GetFileNameWithoutExtension(currentFile);
+        var dialog = new SaveFileDialog
+        {
+            Filter = DocumentFileService.PdfFilter,
+            FileName = $"{sourceName}.pdf",
+            InitialDirectory = currentFile is null
+                ? Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+                : Path.GetDirectoryName(currentFile),
+            Title = "Exportar Markdown como PDF"
+        };
+
+        if (dialog.ShowDialog(this) != true)
+        {
+            return;
+        }
+
+        try
+        {
+            MarkdownPdfExporter.Export(currentMarkdown, dialog.FileName, sourceName);
+            StatusText.Text = $"PDF exportado: {dialog.FileName}";
+        }
+        catch (Exception ex)
+        {
+            ShowFileOperationError("No se pudo exportar PDF", dialog.FileName, ex);
+        }
     }
 
     private void StartSearch(bool moveToFirstMatch)

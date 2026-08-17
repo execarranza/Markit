@@ -22,6 +22,16 @@ El proyecto sigue versionado semantico de forma simple:
 - Se modernizo el modo claro con una paleta blanca/azul/cian alineada con la identidad visual de Markit.
 - Se mantuvo el modo oscuro con la paleta oscura anterior para conservar comodidad de lectura.
 
+### Exportacion
+
+- Se agrego la opcion `Exportar PDF` para generar una copia de lectura del Markdown actual.
+- La exportacion conserva estructura basica de lectura: titulos, parrafos, listas, citas, codigo, tablas simples y resaltados visuales.
+- Se mejoro el formato PDF de tablas, vinetas, listas numeradas y resaltados pastel.
+
+### Distribucion
+
+- Se dejo `dist/MarkitInstaller.exe` versionado en el repositorio para que pueda instalarse al descargar el codigo.
+
 ### Preparacion multiplataforma
 
 - Se agrego `Markit.Core` como primera libreria compartida `net8.0`.

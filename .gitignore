@@ -1,7 +1,10 @@
 # Build outputs
 **/bin/
 **/obj/
-dist/
+dist/*
+!dist/
+!dist/README.md
+!dist/MarkitInstaller.exe
 
 # User/local IDE files
 .vs/

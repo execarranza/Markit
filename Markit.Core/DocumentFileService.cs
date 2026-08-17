@@ -8,6 +8,8 @@ public static class DocumentFileService
 
     public const string SaveFilter = "Markdown (*.md)|*.md|Markdown (*.markdown)|*.markdown|Texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*";
 
+    public const string PdfFilter = "PDF (*.pdf)|*.pdf|Todos los archivos (*.*)|*.*";
+
     public static string Read(string fileName)
     {
         return File.ReadAllText(fileName);
