@@ -2,7 +2,7 @@
 
 ![markit logo](ReadmeReader/Assets/markit-logo-horizontal-light.png)
 
-**markit** es un lector open source de archivos Markdown para Windows. Esta pensado para abrir documentos `.md` con formato, zoom, busqueda, resaltado, modo claro/oscuro y pantalla completa, sin depender de Visual Studio Code, extensiones, navegadores ni herramientas pesadas.
+**markit** es un lector open source de archivos Markdown para Windows. Esta pensado para abrir documentos `.md` con formato, zoom, busqueda, resaltado, modo claro/oscuro y pantalla completa, sin depender de Visual Studio Code, extensiones, navegadores ni herramientas pesadas. Para quienes ya trabajan dentro de VS Code, el proyecto tambien ofrece un complemento opcional de modo lectura.
 
 La idea es simple: leer Markdown con una experiencia comoda, parecida a un lector PDF liviano o a un apunte digital, pero conservando la ventaja de que el archivo sigue siendo texto plano: liviano, rapido de abrir, facil de versionar y amigable para flujos de trabajo con IA.
 
@@ -62,6 +62,30 @@ Comandos soportados:
 8. Exportar una copia PDF cuando se necesite compartir o leer el documento en formato fijo.
 
 Markit esta pensado principalmente para visualizar y estudiar documentos Markdown. La edicion existe como apoyo para guardar resaltados o cambios puntuales, pero el foco del proyecto no es reemplazar un editor de texto ni un IDE.
+
+### Complemento para Visual Studio Code
+
+Markit para VS Code es una extension opcional y no reemplaza la aplicacion de escritorio. Permite activar una vista de lectura responsive sobre el Markdown que ya esta abierto en el editor.
+
+Instalacion local:
+
+1. Abrir VS Code y entrar a **Extensiones** con `Ctrl+Shift+X`.
+2. Abrir el menu `...` del panel de extensiones.
+3. Elegir **Instalar desde VSIX...**.
+4. Seleccionar `dist/Markit-VSCode-0.2.2.vsix`.
+
+Uso:
+
+- abrir un archivo Markdown y pulsar el icono de vista previa en el titulo del editor;
+- ejecutar **Markit: Abrir modo lectura** desde `Ctrl+Shift+P`;
+- alternar el lector con `Ctrl+Alt+M`;
+- activar o desactivar la apertura automatica con el interruptor **Auto** o desde la paleta de comandos;
+- volver al archivo fuente con **Editor**, lo que desactiva `Auto` para evitar reaperturas involuntarias;
+- ajustar el zoom con los controles o con `Ctrl++`, `Ctrl+-` y `Ctrl+0`.
+
+La extension funciona en cualquier sistema operativo compatible con Visual Studio Code. La aplicacion de escritorio `v0.1.0` continua siendo exclusiva de Windows.
+
+La guia para aprender a probar, compilar y empaquetar el complemento esta en [extensions/markit-vscode/README.md](extensions/markit-vscode/README.md).
 
 ### Instalacion en Linux
 

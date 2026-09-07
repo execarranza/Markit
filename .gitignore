@@ -5,10 +5,16 @@ dist/*
 !dist/
 !dist/README.md
 !dist/MarkitInstaller.exe
+!dist/Markit-VSCode-0.2.2.vsix
+**/node_modules/
+extensions/markit-vscode/dist/
 
 # User/local IDE files
 .vs/
 .vscode/
+!extensions/markit-vscode/.vscode/
+!extensions/markit-vscode/.vscode/launch.json
+!extensions/markit-vscode/.vscode/tasks.json
 *.user
 *.suo
 

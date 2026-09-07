@@ -1,0 +1,107 @@
+{
+  "name": "markit-reader",
+  "displayName": "Markit - Markdown Reader",
+  "description": "Modo lectura comodo y responsive para archivos Markdown dentro de Visual Studio Code.",
+  "version": "0.2.2",
+  "publisher": "execarranza",
+  "license": "MIT",
+  "icon": "assets/icon.png",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other",
+    "Visualization"
+  ],
+  "keywords": [
+    "markdown",
+    "reader",
+    "reading",
+    "study",
+    "markit"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/execarranza/Markit.git",
+    "directory": "extensions/markit-vscode"
+  },
+  "activationEvents": [
+    "onLanguage:markdown"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "markit.openReader",
+        "title": "Markit: Abrir modo lectura",
+        "category": "Markit",
+        "icon": "$(open-preview)"
+      },
+      {
+        "command": "markit.toggleReader",
+        "title": "Markit: Activar/desactivar modo lectura",
+        "category": "Markit"
+      },
+      {
+        "command": "markit.toggleAutoOpen",
+        "title": "Markit: Activar/desactivar apertura automatica",
+        "category": "Markit"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "markit.openReader",
+          "when": "editorLangId == markdown",
+          "group": "navigation@10"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "markit.openReader",
+          "when": "editorLangId == markdown",
+          "group": "navigation@10"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "markit.toggleReader",
+        "key": "ctrl+alt+m",
+        "mac": "cmd+alt+m",
+        "when": "editorLangId == markdown || activeWebviewPanelId == markit.reader"
+      }
+    ],
+    "configuration": {
+      "title": "Markit",
+      "properties": {
+        "markit.openInReaderByDefault": {
+          "type": "boolean",
+          "default": false,
+          "scope": "application",
+          "description": "Abre automaticamente el modo lectura de Markit al entrar en un archivo Markdown."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "check": "tsc --noEmit",
+    "compile": "node esbuild.js",
+    "watch": "node esbuild.js --watch",
+    "package": "npm run check && npm run compile && vsce package --out ../../dist/Markit-VSCode-0.2.2.vsix"
+  },
+  "dependencies": {
+    "markdown-it": "^14.1.0",
+    "markdown-it-task-lists": "^2.1.1",
+    "sanitize-html": "^2.17.0"
+  },
+  "devDependencies": {
+    "@types/markdown-it": "^14.1.2",
+    "@types/node": "^22.10.2",
+    "@types/sanitize-html": "^2.16.0",
+    "@types/vscode": "^1.90.0",
+    "@vscode/vsce": "^3.2.2",
+    "esbuild": "^0.28.2",
+    "typescript": "^5.7.2"
+  }
+}

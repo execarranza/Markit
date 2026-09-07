@@ -1,5 +1,17 @@
 # Changelog
 
+## En desarrollo
+
+- Se corrige `Editor` para desactivar la apertura automatica antes de volver al Markdown fuente.
+- Las listas de tareas Markdown ahora se muestran con casillas marcadas o vacias en modo lectura.
+- Se corrige la apertura automatica para poder alternar libremente entre el Markdown fuente y la pestaña de lectura.
+- El boton `Editor` vuelve a la columna de origen del documento.
+- Se agrega una preferencia persistente para abrir Markdown automaticamente con Markit y un interruptor para activarla o desactivarla.
+- Se incorpora el MVP `0.1.0` de Markit para Visual Studio Code como complemento opcional.
+- Se agrega modo lectura responsive, actualizacion en vivo, zoom y temas claro, oscuro o del sistema.
+- Se agrega compatibilidad de lectura con los resaltados guardados por Markit Desktop.
+- Se genera el instalador local `dist/Markit-VSCode-0.1.0.vsix`.
+
 Todos los cambios importantes de Markit se documentaran en este archivo.
 
 El proyecto sigue versionado semantico de forma simple:
